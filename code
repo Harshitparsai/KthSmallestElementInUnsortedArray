@@ -1,0 +1,21 @@
+int kthsmallest(const vector<int> &A, int B)
+{
+    int maxi = 0;
+    for(int a : A) maxi = max(maxi, a);
+    int low = 0, high = maxi;
+    while(low != high)
+    {
+        int mid = (low + high+1)/2;
+        int count = 0;
+        for(int a : A)
+        {
+            if(a < mid) count++;
+        }
+        if(count < B) low = mid;
+        else high = mid - 1;
+    }
+    return low;
+}
+
+
+we have applied binary search to find wheather the element is present equal to B
